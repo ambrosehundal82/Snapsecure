@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Picture Test</title>
+</head>
+<body>
+
+<img src="images/1.jpg" alt="rotating image" width="600" height="500" id="rotator">
+
+<script type="text/javascript">
+(function() {
+    var rotator = document.getElementById('rotator'), //get the element
+        dir = 'images/',                              //images folder
+        delayInSeconds = 1,                           //delay in seconds
+        num = 0,                                      //start number
+        len = 6;                                      //limit
+    setInterval(function(){                           //interval changer
+        rotator.src = dir + num+'.jpg';               //change picture
+        num = (num === len) ? 1 : ++num;              //reset if last image reached
+    }, delayInSeconds * 11);
+}());
+</script>
+</body>
+</html>

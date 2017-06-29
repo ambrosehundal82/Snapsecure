@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Snap Secure</title>
+</head>
+<body>
+
+<form id="picUp" action="http://localhost:8000" method="GET" enctype="multipart/form-data">
+<input type="file" onchange="previewFile()" method="POST"><br>
+<img src="" height="600" width="1000" alt="Image preview...">
+<br>
+<input type="submit" value="Submit"> 
+</form>
+
+<script>
+    function avgC() {
+	//var imgd = preview.getImageData(0, 0, 250, 150);
+	//var pix = imgd.data;
+	alert("submited");
+  }
+   function previewFile(){
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+  previewFile();  //calls the function named previewFile()
+  
+  </script>
+  
+
+  
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello World</title>
+</head>
+<body>
+  <script src="pixi.min.js"> </script>
+  
+  <script>
+var renderer = PIXI.autoDetectRenderer(1000, 600,{antialias: true});
+document.body.appendChild(renderer.view);
+
+
+// create the root of the scene graph
+var stage = new PIXI.Container();
+stage.interactive = true;
+
+// create a texture from an image path
+   var texture = PIXI.Texture.fromImage('images/2.jpg');
+   var img = new Image();
+     img.onload = function(){
+     var height = img.height;
+	 var width = img.width;
+	 }
+	 img.src = 'images/2.jpg';
+	 //renderer.autoResize = true;
+	 //stage.align = "center";
+ // create a new Sprite using the texture
+   var bunny = new PIXI.Sprite(texture);
+// create a texture from an image path
+//var texture = PIXI.Texture.fromImage('C:/Users/User/Documents/Hack_UCSC/images/1.jpg');
+
+// create a new Sprite using the texture
+var bunny = new PIXI.Sprite(texture);
+
+// move the sprite to the center of the screen
+bunny.position.x = 0;
+bunny.position.y = 0;
+
+stage.addChild(bunny);
+
+// Get the CanvasPixelArray from the given coordinates and dimensions.
+
+var graphics1 = new PIXI.Graphics();
+var graphics2 = new PIXI.Graphics();
+
+graphics1.beginFill(000000);
+graphics1.drawRect(0,0,250,150)
+graphics1.drawRect(0,300,250,150)
+graphics1.drawRect(250,150,250,150)
+graphics1.drawRect(250,450,250,150)
+graphics1.drawRect(500,0,250,150)
+graphics1.drawRect(500,300,250,150)
+graphics1.drawRect(750,150,250,150)
+graphics1.drawRect(750,450,250,150)
+
+graphics2.beginFill(000000);
+graphics2.drawRect(0,150,250,150)
+graphics2.drawRect(0,450,250,150)
+graphics2.drawRect(250,0,250,150)
+graphics2.drawRect(250,300,250,150)
+graphics2.drawRect(500,150,250,150)
+graphics2.drawRect(500,450,250,150)
+graphics2.drawRect(750,0,250,150)
+graphics2.drawRect(750,300,250,150)
+
+
+stage.addChild(graphics1, graphics2);
+// start animating
+animate();
+function animate() {
+    requestAnimationFrame(animate);
+	
+	if (graphics1.visible) {
+	graphics1.visible = false;
+	graphics2.visible = true;
+	}
+	else {
+	graphics1.visible = true;
+	graphics2.visible = false;
+	}
+
+    // render the container
+    renderer.render(stage);
+}
+  </script>
+</body>
+</html>
